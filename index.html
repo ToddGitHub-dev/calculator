@@ -1,0 +1,99 @@
+<!doctype html>
+<htmnl>
+    <head>
+        <title>
+            On Line Calculator
+        </title>
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
+    </head>
+    <body class="">
+        <div>
+            <p></p>
+        </div>
+        <div class="container-fluid col-md-2"> 
+            <table class="table table-info shadow-lg">
+                
+                <tbody>
+                    <tr class="border-white">
+                        <th colspan="4">
+                            <span class="d-block p-2 bg-white text-black-50" style="height: 40px;" id="display"></span>
+                        </th>
+                    </tr>
+                    <tr>
+                        <td><button class="btn btn-danger" onclick="del()"><-</button></td>
+                        <td><button class="btn btn-light" onclick="clr()">C</button></td>
+                        <td><button class="btn btn-secondary" onclick="concatenate('(')">(</button></td>
+                        <td><button class="btn btn-secondary" onclick="concatenate(')')">)</button></td>
+                    </tr>
+                    <tr>
+                        <td><button class="btn btn-dark" id="1" onclick="concatenate('1')">1</button></td>
+                        <td><button class="btn btn-dark" id="2" onclick="concatenate('2')">2</button></td>
+                        <td><button class="btn btn-dark" id="3" onclick="concatenate('3')">3</button></td>
+                        <td><button class="btn btn-secondary" onclick="concatenate('/')">/</button></td>
+                    </tr>
+                    <tr>
+                        <td><button class="btn btn-dark" id="4" onclick="concatenate('4')">4</button></td>
+                        <td><button class="btn btn-dark" id="5" onclick="concatenate('5')">5</button></td>
+                        <td><button class="btn btn-dark" id="6" onclick="concatenate('6')">6</button></td>
+                        <td><button class="btn btn-secondary" onclick="concatenate('*')">*</button></td>
+                    </tr>
+                    <tr>
+                        <td><button class="btn btn-dark" id="7" onclick="concatenate('7')">7</button></td>
+                        <td><button class="btn btn-dark" id="8" onclick="concatenate('8')">8</button></td>
+                        <td><button class="btn btn-dark" id="9" onclick="concatenate('9')">9</button></td>
+                        <td><button class="btn btn-secondary" onclick="concatenate('-')">-</button></td>
+                    </tr>
+                    <tr>
+                        <td><button class="btn btn-dark"  id="0" onclick="concatenate('0')">0</button></td>
+                        <td><button class="btn btn-dark" onclick="concatenate('.')">.</button></td>
+                        <td><button class="btn btn-primary" onclick="calculate()">=</button></td>
+                        <td><button class="btn btn-secondary" onclick="concatenate('+')">+</button></td>
+                    </tr>
+                </tbody>
+                
+            </table>
+        </div>
+        <div>
+
+        </div>
+    </body>
+    <footer>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW" crossorigin="anonymous"></script>
+        <script src="server.js"></script>
+        <script>
+            // get element for dispplay
+            let display = document.getElementById("display");
+
+            // define and initialise global variables
+            let input = "";
+            let temp = "";
+
+            // Function Implementation
+
+            function concatenate(value){
+                input += value;
+                display.innerText = input;
+            } 
+
+            function calculate(){    
+                display.innerText = eval(input);
+                console.log(eval(input));
+                input = eval(input);
+                
+            }
+
+            function clr(){
+                display.innerText = "";
+                input = "";
+            }
+            function del(){
+                for(let i = 0; i < (input.length - 1);i++){
+                    temp += input.charAt(i); 
+                }
+                input = temp;
+                temp = "";
+                display.innerText = input;
+            }
+        </script>
+    </footer>
+</htmnl>
